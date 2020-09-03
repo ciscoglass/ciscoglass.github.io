@@ -24,7 +24,7 @@
           "device_type": "IP Phone",
           "namespace": "ciscoglass/",
           "one_shot": false
-      },
-    },
+      }
+    }
   ]
 }
