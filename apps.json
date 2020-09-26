@@ -25,6 +25,19 @@
           "namespace": "ciscoglass/",
           "one_shot": false
       }
+    },
+    {
+      "name": "Bulk Push FMC",
+      "desc": "This tool bulk push network objects from a CSV to an FMC",
+      "img": "",
+      "usage": "",
+      "config": {
+          "repo": "bulkpushfmc",
+          "device_type": "FMC",
+          "namespace": "ciscoglass/",
+          "one_shot": true,
+          "tag": "dev"
+      }
     }
   ]
 }
