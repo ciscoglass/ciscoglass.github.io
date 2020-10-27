@@ -38,6 +38,19 @@
           "one_shot": true,
           "tag": "dev"
       }
+    },
+    {
+      "name": "IFCONFIG TEST",
+      "desc": "This script queries the {URL in host}/json with the provided username/password.",
+      "img": "",
+      "usage": "",
+      "config": {
+          "repo": "sample-request",
+          "device_type": "TEST",
+          "namespace": "ciscoglass/",
+          "one_shot": true,
+          "tag": "v2.0"
+      }
     }
   ]
 }
