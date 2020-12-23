@@ -1,0 +1,120 @@
+{
+  "apps": [
+    {
+      "details": {
+        "name": "Elara ASA ACL optimiser",
+        "desc": "This tool can optimise ASA access lists",
+        "img": "https://www.cisco.com/content/dam/assets/swa/img/600/security-appliance-asa-software-600x400.jpg",
+        "usage": "Need to provide a config file from the ASA"
+      },
+      "device_type": "ASA",
+      "source": {
+        "repo": "elara",
+        "namespace": "ciscoglass/",
+        "compose": {
+          "version": "3",
+          "services": {
+            "db": {
+              "image": "mysql:5.7",
+              "environment": {
+                "MYSQL_DATABASE": "mysql_db",
+                "MYSQL_USER": "dbuser",
+                "MYSQL_PASSWORD": "dbuser",
+                "MYSQL_ROOT_PASSWORD": "secretrootpassword"
+              }
+            },
+            "web": {
+              "image": "ciscoglass/elara:v1.0",
+              "build": ".",
+              "depends_on": [
+                "db"
+              ],
+              "restart": "on-failure",
+              "ports": [
+                "8082:80"
+              ],
+              "environment": [
+                "SECRET_KEY=samplesecretkey123",
+                "ALLOWED_HOSTS=127.0.0.1,localhost",
+                "DEBUG=1",
+                "DJANGO_SUPERUSER_USERNAME=adminuser",
+                "DJANGO_SUPERUSER_PASSWORD=adminpassword",
+                "DJANGO_SUPERUSER_EMAIL=admin@cisco.com"
+              ]
+            }
+          }
+        }
+      },
+      "attributes": {
+        "one_shot": false,
+        "compose_app": true
+      }
+    },
+    {
+      "details": {
+        "name": "ASA to FMC Migration Tool",
+        "desc": "This tool can migrate data from an ASA to an FMC",
+        "img": "https://www.cisco.com/c/en/us/products/security/firepower-management-center/index/_jcr_content/Grid/category_atl/layout-category-atl/blade_4/bladeContents/quarters/Q-Quarter-1/tile_cbbb/image.img.jpg/1572588967767.jpg",
+        "usage": "Need to provide an input of one ASA device and one FMC. Providing more devices will end up taking the first device for each!"
+      },
+      "device_type": "FMC",
+      "source": {
+        "repo": "asa2fmc",
+        "namespace": "ciscoglass/"
+      },
+      "attributes": {
+        "one_shot": true
+      }
+    },
+    {
+      "details": {
+        "name": "IP Phone controller",
+        "desc": "This tool can control an IP phone remotely",
+        "img": "https://www.cisco.com/c/en/us/products/collaboration-endpoints/ip-phones/index/_jcr_content/Grid/category_atl/layout-category-atl/blade_e5bd/bladeContents/scroll_container_d9a/scrollContent/simple_tile_aff.img.png/1573149275632.png",
+        "usage": "Need to provide an input of one IP phone device to be controlled"
+      },
+      "device_type": "IP Phone",
+      "source": {
+        "repo": "ip-phone-controller",
+        "namespace": "ciscoglass/"
+      },
+      "attributes": {
+        "one_shot": false
+      }
+    },
+    {
+      "details": {
+        "name": "Bulk Push FMC",
+        "desc": "This tool bulk push network objects from a CSV to an FMC",
+        "img": "",
+        "usage": ""
+      },
+      "device_type": "FMC",
+      "source": {
+        "repo": "bulkpushfmc",
+        "namespace": "ciscoglass/",
+        "tag": "dev"
+      },
+      "attributes": {
+        "one_shot": true
+      }
+    },
+    {
+      "details": {
+        "name": "IFCONFIG TEST",
+        "desc": "This script queries the {URL in host}/json with the provided username/password.",
+        "img": "",
+        "usage": ""
+      },
+      "device_type": "TEST",
+      "source": {
+        "repo": "sample-request",
+        "namespace": "ciscoglass/",
+        "tag": "v2.0"
+      },
+      "attributes": {
+        "one_shot": true
+      }
+    }
+  ]
+}
