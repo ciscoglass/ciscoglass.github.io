@@ -35,7 +35,7 @@
               ],
               "environment": {
                 "SECRET_KEY": "samplesecretkey123",
-                "ALLOWED_HOSTS": "127.0.0.1,localhost",
+                "ALLOWED_HOSTS": "*",
                 "DEBUG": 1,
                 "DJANGO_SUPERUSER_USERNAME": "adminuser",
                 "DJANGO_SUPERUSER_PASSWORD": "adminpassword",
